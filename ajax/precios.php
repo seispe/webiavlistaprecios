@@ -43,6 +43,8 @@ switch ($_GET["op"]){
         $VENDEDOR=$_GET['vendedor'];
         $linea=$_GET['linea'];
   
+     
+
 		$rspta=$precios->listar($MARCA_PROD,
         $MARCA_VEHI,
         $MODELO_VEHI,

@@ -40,14 +40,32 @@ Class Precios
 
     public function listar($MARCA_PROD,$MARCA_VEHI,$MODELO_VEHI,$FAMILIA,$RUC,$VENDEDOR,$GENERAL){
 
-        $MARCA_PROD=str_replace(" ","%",$MARCA_PROD);
-        $MARCA_PROD=str_replace("%20","%",$MARCA_PROD);
         $MARCA_VEHI=str_replace(" ","%",$MARCA_VEHI);
         $MARCA_VEHI=str_replace("%20","%",$MARCA_VEHI);
         $MODELO_VEHI=str_replace(" ","%",$MODELO_VEHI);
         $MODELO_VEHI=str_replace("%20","%",$MODELO_VEHI);
         $FAMILIA=str_replace(" ","%",$FAMILIA);
         $FAMILIA=str_replace("%20","%",$FAMILIA);
+
+        $con=0;
+        $like_MARCA_PROD='(';
+        while($con<count($MARCA_PROD)){
+            $marca=$MARCA_PROD[$con];
+
+            $marca=str_replace(" ","%",$marca);
+            $marca=str_replace("%20","%",$marca);
+
+           
+            if($con==(count($MARCA_PROD))-1){
+
+                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' )";
+            }else{
+                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' or ";
+            }
+            $con++;
+        }
+
+   
 
       
 
@@ -131,8 +149,8 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where MARCA_PROD like '%$MARCA_PROD%' and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
-                    
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where $like_MARCA_PROD and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
+                 
                 return ejecutarConsultaSQL($sql);
                 
             }else{
@@ -146,8 +164,7 @@ Class Precios
 
     public function listar2($MARCA_PROD,$MARCA_VEHI,$MODELO_VEHI,$FAMILIA,$RUC,$VENDEDOR,$GENERAL){
 
-        $MARCA_PROD=str_replace(" ","%",$MARCA_PROD);
-        $MARCA_PROD=str_replace("%20","%",$MARCA_PROD);
+        
         $MARCA_VEHI=str_replace(" ","%",$MARCA_VEHI);
         $MARCA_VEHI=str_replace("%20","%",$MARCA_VEHI);
         $MODELO_VEHI=str_replace(" ","%",$MODELO_VEHI);
@@ -155,6 +172,25 @@ Class Precios
         $FAMILIA=str_replace(" ","%",$FAMILIA);
         $FAMILIA=str_replace("%20","%",$FAMILIA);
 
+        
+        $con=0;
+        $like_MARCA_PROD='(';
+        while($con<count($MARCA_PROD)){
+            $marca=$MARCA_PROD[$con];
+
+            $marca=str_replace(" ","%",$marca);
+            $marca=str_replace("%20","%",$marca);
+
+           
+            if($con==(count($MARCA_PROD))-1){
+
+                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' )";
+            }else{
+                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' or ";
+            }
+            $con++;
+        }
+      
       
 
         if($MARCA_PROD==""  && $MARCA_VEHI==""  &&  $MODELO_VEHI==""  &&  $FAMILIA=="" ){
@@ -212,7 +248,7 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where MARCA_PROD like '%$MARCA_PROD%' and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where $like_MARCA_PROD and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
                     
                 return ejecutarConsultaSQL($sql);
                 

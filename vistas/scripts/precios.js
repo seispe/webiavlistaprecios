@@ -28,6 +28,11 @@ function init(){
 		//listar();
 }
 
+
+function marcapro(){
+	console.log($("#MARCA_PROD").val());
+}
+
 function reset(){
 	$("#MARCA_PROD").val("");
 	$('#MARCA_PROD').selectpicker('refresh');

@@ -36,7 +36,7 @@ ini_set("pcre.backtrack_limit","99999999999999999");
 
                     <div class="form-inline col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <label>Marca producto</label>
-                          <select name="MARCA_PROD" id="MARCA_PROD" class="form-control selectpicker" data-live-search="true" >                         	
+                          <select name="MARCA_PROD" multiple=true id="MARCA_PROD" class="form-control selectpicker" data-live-search="true" onchange="marcapro()" >                         	
                           </select>                          
                     </div>
 
