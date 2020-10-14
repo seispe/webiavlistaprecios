@@ -78,7 +78,7 @@ Class Precios
                     PRECIO_MINORISTA_IVA,
                     PRECIO_ESPECIAL,
                     CANT_MATRIZ,
-                    PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) ='COLISIÓN - CARROCERIA'";
+                    PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) ='COLISIÓN - CARROCERIA' and CANT_MATRIZ >0";
 
                 }else{
                     $sql="SELECT top 1 CODIGO_EMPRESA,
@@ -93,7 +93,7 @@ Class Precios
                     PRECIO_MINORISTA_IVA,
                     PRECIO_ESPECIAL,
                     CANT_MATRIZ,
-                    PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) IN('MOTOR - MOTOR DIESEL','MOTOR - MOTOR GASOLINA')";
+                    PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) IN('MOTOR - MOTOR DIESEL','MOTOR - MOTOR GASOLINA') and CANT_MATRIZ >0";
                         
                 }
 
@@ -131,7 +131,7 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where MARCA_PROD like '%$MARCA_PROD%' and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%'";
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where MARCA_PROD like '%$MARCA_PROD%' and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
                     
                 return ejecutarConsultaSQL($sql);
                 
@@ -174,7 +174,7 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) ='COLISIÓN - CARROCERIA'";
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) ='COLISIÓN - CARROCERIA' and CANT_MATRIZ >0";
 
             }else{
                 $sql="SELECT CODIGO_EMPRESA,
@@ -189,7 +189,7 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) IN('MOTOR - MOTOR DIESEL','MOTOR - MOTOR GASOLINA')";
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) IN('MOTOR - MOTOR DIESEL','MOTOR - MOTOR GASOLINA') and CANT_MATRIZ >0";
                     
             }
                 return ejecutarConsultaSQL($sql);
@@ -212,7 +212,7 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where MARCA_PROD like '%$MARCA_PROD%' and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%'";
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where MARCA_PROD like '%$MARCA_PROD%' and MARCA_VEHI like '%$MARCA_VEHI%'  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
                     
                 return ejecutarConsultaSQL($sql);
                 
