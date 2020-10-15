@@ -466,9 +466,9 @@ Class Precios
 
                 
 
-                // while($regCorreos=$SelectCorreo->fetchObject()){
-                //     $mail->AddAddress($regCorreos->correo1);
-                // }
+                while($regCorreos=$SelectCorreo->fetchObject()){
+                    $mail->AddAddress($regCorreos->correo1);
+                }
 
                 //generar pdf
                 $date=date('Y-m-d');
@@ -479,7 +479,7 @@ Class Precios
 
                 //$mail->AddAddress('dannyggg23@gmail.com');
                 $mail->AddAddress('dggarcia@iav.com.ec');
-                //$mail->AddAddress('mvargas@iav.com.ec');
+                $mail->AddAddress('mvargas@iav.com.ec');
 
                 $mail->Subject ='LISTADO DE PRECIOS';
 
