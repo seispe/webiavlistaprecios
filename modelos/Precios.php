@@ -282,16 +282,14 @@ Class Precios
         RTRIM(LTRIM(INET1)) correo1 from SY01200 where Master_Type = 'CUS' and Master_ID ='$ruc'
         UNION ALL 
         SELECT ven_codigo, correo FROM SI_PRE..vendedores WHERE VEN_CODIGO = '$vendedor'";
-
         return ejecutarConsultaSQL($sql);
     }
+
 
     public function reporteEmail($MARCA_PROD,
     $MARCA_VEHI,
     $MODELO_VEHI,
     $FAMILIA,$RUC,$VENDEDOR,$linea){
-
-
 
             $rspta=$this->listar2($MARCA_PROD,
             $MARCA_VEHI,
@@ -373,7 +371,7 @@ Class Precios
                     <TD WIDTH=102 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><B>CODIGO</B></P>
                     </TD>
-                    <TD WIDTH=102 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+                    <TD WIDTH=302 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><B>DESCRIPCION</B></P>
                     </TD>
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
@@ -386,13 +384,7 @@ Class Precios
                         <P ALIGN=CENTER><B>MODELO_VEHI</B></P>
                     </TD>
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><B>FAMILIA</B></P>
-                    </TD>
-                    <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><B>PRECIO_MAYO</B></P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><B>CANTIDAD</B></P>
                     </TD>
                 </TR>';
 
@@ -411,7 +403,7 @@ Class Precios
                     <TD WIDTH=102 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->CODIGO_EMPRESA.'</SPAN></FONT></FONT></FONT></P>
                     </TD>
-                    <TD WIDTH=102 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+                    <TD WIDTH=302 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->DESCRIPCION.'
                         </SPAN></FONT></FONT></FONT></P>
                     </TD>
@@ -425,14 +417,7 @@ Class Precios
                         <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->MODELO_VEHI.'</SPAN></FONT></FONT></FONT></P>
                     </TD>
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->FAMILIA.'
-                        </SPAN></FONT></FONT></FONT></P>
-                    </TD>
-                    <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.number_format($reg->PRECIO_MAYORISTA_IVA,2,'.','').'</SPAN></FONT></FONT></FONT></P>
-                    </TD>
-                    <TD WIDTH=102 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER>'.$cantidad.'</P>
                     </TD>
                 </TR>';
                 }
@@ -467,7 +452,13 @@ Class Precios
                 
 
                 while($regCorreos=$SelectCorreo->fetchObject()){
-                    $mail->AddAddress($regCorreos->correo1);
+
+                    $to_array = explode(';', $regCorreos->correo1);
+                    foreach($to_array as $address)
+                    {
+                        $mail->addAddress($address);
+                    }
+
                 }
 
                 //generar pdf
