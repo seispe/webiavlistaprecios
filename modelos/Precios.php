@@ -279,7 +279,7 @@ Class Precios
 
     public function selectEmail($ruc,$vendedor){
         $sql="SELECT RTRIM(LTRIM(Master_ID)) ruc ,
-        REPLACE(RTRIM(LTRIM(INET1)),';','') correo1 from SY01200 where Master_Type = 'CUS' and Master_ID ='$ruc'
+        RTRIM(LTRIM(INET1)) correo1 from SY01200 where Master_Type = 'CUS' and Master_ID ='$ruc'
         UNION ALL 
         SELECT ven_codigo, correo FROM SI_PRE..vendedores WHERE VEN_CODIGO = '$vendedor'";
 
