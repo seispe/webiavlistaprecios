@@ -145,9 +145,13 @@ Class Precios
             if((int)$resp->CONTADOR<2){
 
                 $filtro=$like_MARCA_PROD.'_'.$MARCA_VEHI.'_'.$MODELO_VEHI.'_'.$FAMILIA;
+                $filtro=str_replace("%"," ",$filtro);
+                $filtro=str_replace("'","",$filtro);
+                $filtro=str_replace("(","",$filtro);
+                $filtro=str_replace(")","",$filtro);
 
                 $sql="INSERT INTO [GA_VTA_CTR_LISTA_PRECIOS] (tipo,ruc,fecha,vendedor,filtros) VALUES ('ESPECIALISTA','$RUC',GETDATE(),'$VENDEDOR','$filtro')";
-            
+               
                 ejecutarConsultaSQL($sql);
 
                 $sql="SELECT top 1  CODIGO_EMPRESA,
@@ -462,9 +466,9 @@ Class Precios
 
                 
 
-                while($regCorreos=$SelectCorreo->fetchObject()){
-                    $mail->AddAddress($regCorreos->correo1);
-                }
+                // while($regCorreos=$SelectCorreo->fetchObject()){
+                //     $mail->AddAddress($regCorreos->correo1);
+                // }
 
                 //generar pdf
                 $date=date('Y-m-d');
@@ -475,7 +479,7 @@ Class Precios
 
                 //$mail->AddAddress('dannyggg23@gmail.com');
                 $mail->AddAddress('dggarcia@iav.com.ec');
-                $mail->AddAddress('mvargas@iav.com.ec');
+                //$mail->AddAddress('mvargas@iav.com.ec');
 
                 $mail->Subject ='LISTADO DE PRECIOS';
 
