@@ -34,7 +34,7 @@ function marcapro(){
 }
 
 function reset(){
-	$("#MARCA_PROD").val("");
+	$("#MARCA_PROD").val([]);
 	$('#MARCA_PROD').selectpicker('refresh');
 
 	$("#MARCA_VEHI").val("");
@@ -100,11 +100,11 @@ function listar()
 	if(vendedor==="" || ruc===""){
 		bootbox.alert("ERROR DE USUARIO O CLIENTE");
 	}else{
-if(MARCA_PROD==="" &&
-		MARCA_VEHI==="" &&
-		MODELO_VEHI==="" &&
-		FAMILIA==="" &&
-		linea===""){
+	if(MARCA_PROD.length==0 &&
+			MARCA_VEHI==="" &&
+			MODELO_VEHI==="" &&
+			FAMILIA==="" &&
+			linea===""){
 			bootbox.alert("DEBE SELECIONAR UNA LINEA PARA GENERAR EL REPORTE GENERAL");
 	}else{
 
@@ -125,6 +125,7 @@ if(MARCA_PROD==="" &&
 				var resp=data.split("___");
 				console.log(resp[1]);
 				bootbox.alert("SE GENERO Y SE ENVIO EL REPORTE ");
+				reset();
 			}
 
         }
