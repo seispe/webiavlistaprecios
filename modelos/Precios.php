@@ -38,6 +38,17 @@ Class Precios
 
     }
 
+    public function selectModeloMarca($MARCA_VEHI){
+
+        $MARCA_VEHI=str_replace(" ","%",$MARCA_VEHI);
+        $MARCA_VEHI=str_replace("%20","%",$MARCA_VEHI);
+        
+        $sql="SELECT distinct RTRIM(LTRIM(MODELO_VEHI)) MODELO_VEHI from VI_LISTA_PRECIOS where MODELO_VEHI <> '' and MARCA_VEHI like '%$MARCA_VEHI%'";
+     
+        return ejecutarConsultaSQL($sql);
+
+    }
+
     public function listar($MARCA_PROD,$MARCA_VEHI,$MODELO_VEHI,$FAMILIA,$RUC,$VENDEDOR,$GENERAL){
 
         $MARCA_VEHI=str_replace(" ","%",$MARCA_VEHI);

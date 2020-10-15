@@ -28,10 +28,17 @@ function init(){
 		//listar();
 }
 
+function cargar(){
 
-function marcapro(){
-	console.log($("#MARCA_PROD").val());
+	var MARCA_VEHI=$('#MARCA_VEHI').val();
+	$.post("../ajax/precios.php?op=MODELO_VEHI_MARCA&MARCA_VEHI="+MARCA_VEHI, function(r){
+		$("#MODELO_VEHI").html(r);
+		$('#MODELO_VEHI').selectpicker('refresh');
+	});
+
 }
+
+
 
 function reset(){
 	$("#MARCA_PROD").val([]);
@@ -40,8 +47,10 @@ function reset(){
 	$("#MARCA_VEHI").val("");
 	$('#MARCA_VEHI').selectpicker('refresh');
 
-	$("#MODELO_VEHI").val("");
-	$('#MODELO_VEHI').selectpicker('refresh');
+	$.post("../ajax/precios.php?op=MODELO_VEHI", function(r){
+		$("#MODELO_VEHI").html(r);
+		$('#MODELO_VEHI').selectpicker('refresh');
+	});
 
 	$("#FAMILIA").val("");
 	$('#FAMILIA').selectpicker('refresh');

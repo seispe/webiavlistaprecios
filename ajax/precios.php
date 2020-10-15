@@ -156,9 +156,10 @@ switch ($_GET["op"]){
 					$ech.= '<option value="'. $reg->MODELO_VEHI . '"> '.$reg->MODELO_VEHI.' </option>';
                 }
         echo $ech;
-         break;
+        break;
 
-         case 'FAMILIA':
+        
+        case 'FAMILIA':
 
             $rspta = $precios->FAMILIA();
             $ech='<option value="">--SELECCIONE--</option>';
@@ -168,7 +169,24 @@ switch ($_GET["op"]){
 					$ech.= '<option value="'. $reg->FAMILIA . '"> '.$reg->FAMILIA.' </option>';
                 }
         echo $ech;
-         break;
+        break;
+
+
+        case 'MODELO_VEHI_MARCA':
+
+            
+         
+
+            $rspta = $precios->selectModeloMarca($MARCA_VEHI);
+
+            $ech='<option value="">--SELECCIONE--</option>';
+
+		while ($reg = $rspta->fetchObject())
+				{
+					$ech.= '<option value="'. $reg->MODELO_VEHI . '"> '.$reg->MODELO_VEHI.' </option>';
+                }
+        echo $ech;
+        break;
 
 
          
