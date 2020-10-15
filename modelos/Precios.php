@@ -89,7 +89,7 @@ Class Precios
 
             if(empty($resp->fetchObject())){
 
-                $sql="INSERT INTO [GA_VTA_CTR_LISTA_PRECIOS] (tipo,ruc,fecha,vendedor) VALUES ('GENERAL','$RUC',GETDATE(),'$VENDEDOR')";
+                $sql="INSERT INTO [GA_VTA_CTR_LISTA_PRECIOS] (tipo,ruc,fecha,vendedor,filtros) VALUES ('GENERAL','$RUC',GETDATE(),'$VENDEDOR','$GENERAL')";
             
                 ejecutarConsultaSQL($sql);
 
@@ -144,7 +144,9 @@ Class Precios
           
             if((int)$resp->CONTADOR<2){
 
-                $sql="INSERT INTO [GA_VTA_CTR_LISTA_PRECIOS] (tipo,ruc,fecha,vendedor) VALUES ('ESPECIALISTA','$RUC',GETDATE(),'$VENDEDOR')";
+                $filtro=$like_MARCA_PROD.'_'.$MARCA_VEHI.'_'.$MODELO_VEHI.'_'.$FAMILIA;
+
+                $sql="INSERT INTO [GA_VTA_CTR_LISTA_PRECIOS] (tipo,ruc,fecha,vendedor,filtros) VALUES ('ESPECIALISTA','$RUC',GETDATE(),'$VENDEDOR','$filtro')";
             
                 ejecutarConsultaSQL($sql);
 
