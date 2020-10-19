@@ -62,8 +62,8 @@ ini_set("pcre.backtrack_limit","99999999999999999");
                           <label>Línea</label>
                           <select name="linea" id="linea" class="form-control selectpicker" data-live-search="true" > 
                             <option value="">--SELECCIONE--</option>                        	
-                            <option value="carroceria">CARROCERIA</option>                        	
-                            <option value="motor">MOTOR</option>                        	
+                            <option value="CARROCERIA">CARROCERIA</option>                        	
+                            <option value="MOTOR">MOTOR</option>                        	
                           </select>                          
                     </div>
 

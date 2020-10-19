@@ -42,6 +42,7 @@ switch ($_GET["op"]){
         $RUC=$_GET['ruc'];
         $VENDEDOR=$_GET['vendedor'];
         $linea=$_GET['linea'];
+
   
      
 

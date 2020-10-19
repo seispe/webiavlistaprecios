@@ -230,6 +230,8 @@ Class Precios
                 PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS WHERE RTRIM(LTRIM(SUBLINEA)) ='COLISIÓN - CARROCERIA' and CANT_MATRIZ >0
                 ORDER BY DESCRIPCION ASC";
 
+             
+
             }else{
                 $sql="SELECT CODIGO_EMPRESA,
                 DESCRIPCION,
