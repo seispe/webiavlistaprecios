@@ -167,7 +167,7 @@ switch ($_GET["op"]){
 
 		while ($reg = $rspta->fetchObject())
 				{
-					$ech.= '<option value="'. $reg->FAMILIA . '"> '.$reg->FAMILIA.' </option>';
+					$ech.= '<option value="'. $reg->Linea_desc . '"> '.$reg->Linea_desc.' </option>';
                 }
         echo $ech;
         break;

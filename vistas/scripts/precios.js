@@ -30,11 +30,19 @@ function init(){
 
 function cargar(){
 
-	var MARCA_VEHI=$('#MARCA_VEHI').val();
-	$.post("../ajax/precios.php?op=MODELO_VEHI_MARCA&MARCA_VEHI="+MARCA_VEHI, function(r){
-		$("#MODELO_VEHI").html(r);
-		$('#MODELO_VEHI').selectpicker('refresh');
-	});
+	MARCA_VEHI=$('#MARCA_VEHI').val();
+	if(MARCA_VEHI.length==1){
+		$("#MODELO_VEHI").prop( "disabled", false );
+		var MARCA_VEHI=$('#MARCA_VEHI').val();
+		$.post("../ajax/precios.php?op=MODELO_VEHI_MARCA&MARCA_VEHI="+MARCA_VEHI, function(r){
+			$("#MODELO_VEHI").html(r);
+			$('#MODELO_VEHI').selectpicker('refresh');
+		});
+	}else{
+		$("#MODELO_VEHI").prop( "disabled", true );
+	}
+
+	
 
 }
 
@@ -44,7 +52,7 @@ function reset(){
 	$("#MARCA_PROD").val([]);
 	$('#MARCA_PROD').selectpicker('refresh');
 
-	$("#MARCA_VEHI").val("");
+	$("#MARCA_VEHI").val([]);
 	$('#MARCA_VEHI').selectpicker('refresh');
 
 	$.post("../ajax/precios.php?op=MODELO_VEHI", function(r){
@@ -110,7 +118,7 @@ function listar()
 		bootbox.alert("ERROR DE USUARIO O CLIENTE");
 	}else{
 	if(MARCA_PROD.length==0 &&
-			MARCA_VEHI==="" &&
+			MARCA_VEHI.length==0 &&
 			MODELO_VEHI==="" &&
 			FAMILIA==="" &&
 			linea===""){

@@ -42,7 +42,7 @@ ini_set("pcre.backtrack_limit","99999999999999999");
 
                     <div class="form-inline col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <label>Marca vehículo</label>
-                          <select name="MARCA_VEHI" id="MARCA_VEHI" class="form-control selectpicker" data-live-search="true" onchange="cargar()" >                         	
+                          <select name="MARCA_VEHI" multiple=true id="MARCA_VEHI" class="form-control selectpicker" data-live-search="true" onchange="cargar()" >                         	
                           </select>                          
                     </div>
 
