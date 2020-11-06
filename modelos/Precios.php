@@ -33,7 +33,7 @@ Class Precios
 
     public function FAMILIA(){
 
-        $sql="SELECT DISTINCT Linea_desc  from TB_ROTACION WHERE Linea_desc <> ''";
+        $sql="SELECT DISTINCT LTRIM(RTRIM(Linea_desc)) Linea_desc  from TB_ROTACION WHERE Linea_desc <> ''";
         return ejecutarConsultaSQL($sql);
 
     }
