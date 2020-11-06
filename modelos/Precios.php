@@ -60,39 +60,51 @@ Class Precios
         $con=0;
         $like_MARCA_PROD='(';
        
-
-        while($con<count($MARCA_PROD)){
-            $marca=$MARCA_PROD[$con];
-
-            $marca=str_replace(" ","%",$marca);
-            $marca=str_replace("%20","%",$marca);
-
-           
-            if($con==(count($MARCA_PROD))-1){
-
-                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' )";
-            }else{
-                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' or ";
+        if(!empty($MARCA_PROD)){
+            while($con<count($MARCA_PROD)){
+                $marca=$MARCA_PROD[$con];
+    
+                $marca=str_replace(" ","%",$marca);
+                $marca=str_replace("%20","%",$marca);
+    
+               
+                if($con==(count($MARCA_PROD))-1){
+    
+                    $like_MARCA_PROD.="MARCA_PROD like '%$marca%' )";
+                }else{
+                    $like_MARCA_PROD.="MARCA_PROD like '%$marca%' or ";
+                }
+                $con++;
             }
-            $con++;
+        }else{
+            $like_MARCA_PROD="MARCA_PROD like '%%'";
         }
-        $con=0;
-        $like_MARCA_VEHI='(';
-        while($con<count($MARCA_VEHI)){
-            $marca=$MARCA_VEHI[$con];
 
-            $marca=str_replace(" ","%",$marca);
-            $marca=str_replace("%20","%",$marca);
-
-           
-            if($con==(count($MARCA_VEHI))-1){
-
-                $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' )";
-            }else{
-                $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' or ";
+        if(!empty($MARCA_VEHI)){
+            $con=0;
+            $like_MARCA_VEHI='(';
+    
+            while($con<count($MARCA_VEHI)){
+                $marca=$MARCA_VEHI[$con];
+    
+                $marca=str_replace(" ","%",$marca);
+                $marca=str_replace("%20","%",$marca);
+    
+               
+                if($con==(count($MARCA_VEHI))-1){
+    
+                    $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' )";
+                }else{
+                    $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' or ";
+                }
+                $con++;
             }
-            $con++;
+        }else{
+            $like_MARCA_VEHI="MARCA_VEHI like '%%'";
         }
+
+       
+     
 
    
 
@@ -184,8 +196,8 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where $like_MARCA_PROD and $like_MARCA_VEHI  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0";
-                 
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where $like_MARCA_PROD and $like_MARCA_VEHI  and MODELO_VEHI like '%$MODELO_VEHI%' and ltrim(rtrim(SUBLINEA)) like '%$FAMILIA%' and CANT_MATRIZ >0";
+               
                 return ejecutarConsultaSQL($sql);
                 
             }else{
@@ -207,46 +219,56 @@ Class Precios
         $FAMILIA=str_replace("%20","%",$FAMILIA);
 
         
-        $con=0;
-        $like_MARCA_PROD='(';
-        while($con<count($MARCA_PROD)){
-
-            
-            $marca=$MARCA_PROD[$con];
-
-            $marca=str_replace(" ","%",$marca);
-            $marca=str_replace("%20","%",$marca);
-
-           
-            if($con==(count($MARCA_PROD))-1){
-
-                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' )";
-            }else{
-                $like_MARCA_PROD.="MARCA_PROD like '%$marca%' or ";
+        if(!empty($MARCA_PROD)){
+            $con=0;
+            $like_MARCA_PROD='(';
+            while($con<count($MARCA_PROD)){
+    
+                
+                $marca=$MARCA_PROD[$con];
+    
+                $marca=str_replace(" ","%",$marca);
+                $marca=str_replace("%20","%",$marca);
+    
+               
+                if($con==(count($MARCA_PROD))-1){
+    
+                    $like_MARCA_PROD.="MARCA_PROD like '%$marca%' )";
+                }else{
+                    $like_MARCA_PROD.="MARCA_PROD like '%$marca%' or ";
+                }
+                $con++;
             }
-            $con++;
+        }else{
+            $like_MARCA_PROD="MARCA_PROD like '%%'";
         }
 
-            
-        $con=0;
-        $like_MARCA_VEHI='(';
-        while($con<count($MARCA_VEHI)){
+      
 
-            
-            $marca=$MARCA_VEHI[$con];
-
-            $marca=str_replace(" ","%",$marca);
-            $marca=str_replace("%20","%",$marca);
-
-           
-            if($con==(count($MARCA_VEHI))-1){
-
-                $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' )";
+            if(!empty($MARCA_VEHI)){
+                $con=0;
+                $like_MARCA_VEHI='(';
+                while($con<count($MARCA_VEHI)){
+        
+                    
+                    $marca=$MARCA_VEHI[$con];
+        
+                    $marca=str_replace(" ","%",$marca);
+                    $marca=str_replace("%20","%",$marca);
+        
+                   
+                    if($con==(count($MARCA_VEHI))-1){
+        
+                        $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' )";
+                    }else{
+                        $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' or ";
+                    }
+                    $con++;
+                }
             }else{
-                $like_MARCA_VEHI.="MARCA_VEHI like '%$marca%' or ";
+                $like_MARCA_VEHI="MARCA_VEHI like '%%'";
             }
-            $con++;
-        }
+       
       
       
 
@@ -309,9 +331,10 @@ Class Precios
                 PRECIO_MINORISTA_IVA,
                 PRECIO_ESPECIAL,
                 CANT_MATRIZ,
-                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where $like_MARCA_PROD and $like_MARCA_VEHI  and MODELO_VEHI like '%$MODELO_VEHI%' and FAMILIA like '%$FAMILIA%' and CANT_MATRIZ >0
+                PRECIO_ESPECIAL_IVA FROM VI_LISTA_PRECIOS where $like_MARCA_PROD and $like_MARCA_VEHI  and MODELO_VEHI like '%$MODELO_VEHI%' and RTRIM(LTRIM(SUBLINEA)) like '%$FAMILIA%' and CANT_MATRIZ >0
                 ORDER BY DESCRIPCION ASC";
                     
+                 
                 return ejecutarConsultaSQL($sql);
                 
             } 
@@ -513,9 +536,9 @@ Class Precios
                 $mpdf->Output('../files/'.$RUC.$date.'.pdf');
                 $docpdf='../files/'.$RUC.$date.'.pdf';
 
-                //$mail->AddAddress('dannyggg23@gmail.com');
+                $mail->AddAddress('dannyggg23@gmail.com');
                 $mail->AddAddress('dggarcia@iav.com.ec');
-                $mail->AddAddress('mvargas@iav.com.ec');
+                //$mail->AddAddress('mvargas@iav.com.ec');
 
                 $mail->Subject ='LISTADO DE PRECIOS';
 
