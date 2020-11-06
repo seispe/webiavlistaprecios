@@ -536,9 +536,9 @@ Class Precios
                 $mpdf->Output('../files/'.$RUC.$date.'.pdf');
                 $docpdf='../files/'.$RUC.$date.'.pdf';
 
-                $mail->AddAddress('dannyggg23@gmail.com');
+                //$mail->AddAddress('dannyggg23@gmail.com');
                 $mail->AddAddress('dggarcia@iav.com.ec');
-                //$mail->AddAddress('mvargas@iav.com.ec');
+                $mail->AddAddress('mvargas@iav.com.ec');
 
                 $mail->Subject ='LISTADO DE PRECIOS';
 
