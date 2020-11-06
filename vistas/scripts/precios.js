@@ -4,6 +4,7 @@ var tabla;
 function init(){
 	mostrarform(false);
 	
+	$("#MODELO_VEHI").prop( "disabled", false );
 
 		$.post("../ajax/precios.php?op=MARCA_PROD", function(r){
 			$("#MARCA_PROD").html(r);
@@ -65,6 +66,8 @@ function reset(){
 
 	$("#linea").val("");
 	$('#linea').selectpicker('refresh');
+
+	$("#MODELO_VEHI").prop( "disabled", false );
 }
 
 //Función limpiar
