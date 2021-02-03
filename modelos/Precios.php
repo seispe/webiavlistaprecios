@@ -459,11 +459,9 @@ Class Precios
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><B>MARCA_PROD</B></P>
                     </TD>
+                   
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><B>MARCA_VEHI</B></P>
-                    </TD>
-                    <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><B>MODELO_VEHI</B></P>
+                        <P ALIGN=CENTER><B>CANT_STOCK</B></P>
                     </TD>
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><B>PRECIO_MAYO</B></P>
@@ -493,10 +491,7 @@ Class Precios
                         <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->MARCA_PROD.'</SPAN></FONT></FONT></FONT></P>
                     </TD>
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->MARCA_VEHI.'</SPAN></FONT></FONT></FONT></P>
-                    </TD>
-                    <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
-                        <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$reg->MODELO_VEHI.'</SPAN></FONT></FONT></FONT></P>
+                        <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.$cantidad.'</SPAN></FONT></FONT></FONT></P>
                     </TD>
                     <TD WIDTH=103 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                         <P ALIGN=CENTER><FONT COLOR="#333333"><FONT FACE="Source Sans Pro, serif"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="background: #f9f9f9">'.number_format($reg->PRECIO_MAYORISTA_IVA,2,'.','').'</SPAN></FONT></FONT></FONT></P>
@@ -551,8 +546,8 @@ Class Precios
                 $docpdf='../files/'.$RUC.$date.'.pdf';
 
                 //$mail->AddAddress('dannyggg23@gmail.com');
-                $mail->AddAddress('dggarcia@iav.com.ec');
-                $mail->AddAddress('mvargas@iav.com.ec');
+                $mail->addCC('dggarcia@iav.com.ec');
+                $mail->addCC('mvargas@iav.com.ec');
 
                 $mail->Subject ='LISTADO DE PRECIOS';
 
